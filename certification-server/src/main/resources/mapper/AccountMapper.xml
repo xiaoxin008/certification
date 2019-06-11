@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaoxin.certification.dao.AccountMapper">
+
+    <resultMap id="accountMap" type="com.xiaoxin.certification.domain.Account">
+        <id property="id" column="a_id" jdbcType="INTEGER"/>
+        <result property="username" column="a_username" jdbcType="VARCHAR"/>
+        <result property="password" column="a_password" jdbcType="VARCHAR"/>
+        <collection property="roles" ofType="com.xiaoxin.certification.domain.Role" columnPrefix="r_">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="expression" column="expression" jdbcType="VARCHAR"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+
+    <select id="getAccountByUsername" parameterType="string" resultMap="accountMap">
+        SELECT a.id AS a_id,a.username AS a_username,a.password AS a_password,
+               r.id AS r_id,r.name AS r_name,r.expression AS r_expression,r.description AS r_description from account a
+               left join account_role ur on ur.a_id = a.id
+               left join role r on ur.r_id = r.id WHERE a.username = #{username}
+    </select>
+
+</mapper>
