@@ -22,4 +22,11 @@
                left join role r on ur.r_id = r.id WHERE a.username = #{username}
     </select>
 
+    <select id="geteAccountList" resultMap="accountMap">
+        SELECT a.id AS a_id,a.username AS a_username,a.password AS a_password,
+               r.id AS r_id,r.name AS r_name,r.expression AS r_expression,r.description AS r_description from account a
+               left join account_role ur on ur.a_id = a.id
+               left join role r on ur.r_id = r.id
+    </select>
+
 </mapper>

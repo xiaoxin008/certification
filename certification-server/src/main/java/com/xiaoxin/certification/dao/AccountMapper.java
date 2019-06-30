@@ -4,6 +4,8 @@ import com.xiaoxin.certification.domain.Account;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * 账户dao
  *
@@ -20,4 +22,11 @@ public interface AccountMapper {
      * @return 账户对象
      */
     Account getAccountByUsername(@Param("username") String username);
+
+    /**
+     * 获取账户集合
+     *
+     * @return 账户集合对象
+     */
+    List<Account> geteAccountList();
 }

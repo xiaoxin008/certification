@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Spring Security SSO</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+</head>
+
+<body>
+<div class="container">
+    <div class="col-sm-12">
+        <h1>Secured Page</h1>
+        <!--Welcome, <p>登录者:<span th:text="${#httpServletRequest.remoteUser}"></span></p>-->
+        <div sec:authorize="isAuthenticated()">
+            <p>已有用户登录</p>
+            <p>登录者:<span sec:authentication="name"></span></p>
+            <p>角色:<span sec:authentication="authorities"></span></p>
+            <p>是否是管理员:<span sec:authorize="hasRole('ROLE_ADMIN')">
+                是
+            </span><span sec:authorize="!hasRole('ROLE_ADMIN')">否</span></p>
+        </div>
+        <div sec:authorize="isAnonymous()">
+            <p>未有用户登录</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

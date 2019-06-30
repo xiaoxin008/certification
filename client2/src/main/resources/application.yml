@@ -1,0 +1,26 @@
+auth-server: http://localhost:9090
+server:
+  port: 8883
+  servlet:
+    context-path: /client
+  session:
+    cookie:
+      name: SESSION1
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      clientId: client
+      clientSecret: 123456
+      accessTokenUri: ${auth-server}/oauth/token
+      userAuthorizationUri: ${auth-server}/oauth/authorize
+    resource:
+      userInfoUri: ${auth-server}/user
+spring:
+  thymeleaf:
+    cache: false
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka
