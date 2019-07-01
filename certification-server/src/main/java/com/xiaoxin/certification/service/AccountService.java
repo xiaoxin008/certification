@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import java.util.List;
 
 /**
- * 账户接口
+ * 账户服务
  *
  * @author xiaoxin008(313595055 @ qq.com)
  * @since 1.0.0

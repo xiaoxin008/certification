@@ -1,4 +1,4 @@
-package com.xiaoxin008.client.config;
+package com.xiaoxin008.client.security;
 
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Configuration;

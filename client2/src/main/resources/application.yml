@@ -1,4 +1,3 @@
-auth-server: http://localhost:9090
 server:
   port: 8883
   servlet:
@@ -7,16 +6,16 @@ server:
     cookie:
       name: SESSION1
 security:
-  basic:
-    enabled: false
+  auth-server: http://localhost:9090
   oauth2:
     client:
-      clientId: client
+      clientId: certification
       clientSecret: 123456
-      accessTokenUri: ${auth-server}/oauth/token
-      userAuthorizationUri: ${auth-server}/oauth/authorize
+      accessTokenUri: ${security.auth-server}/oauth/token
+      userAuthorizationUri: ${security.auth-server}/oauth/authorize
+      scope: write
     resource:
-      userInfoUri: ${auth-server}/user
+      userInfoUri: ${security.auth-server}/user
 spring:
   thymeleaf:
     cache: false

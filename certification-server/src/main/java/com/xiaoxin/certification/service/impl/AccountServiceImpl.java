@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 账户接口实现
+ * 账户服务实现
  *
  * @author xiaoxin008(313595055 @ qq.com)
  * @since 1.0.0

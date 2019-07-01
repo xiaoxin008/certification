@@ -17,6 +17,9 @@
             <p>已有用户登录</p>
             <p>登录者:<span sec:authentication="name"></span></p>
             <p>角色:<span sec:authentication="authorities"></span></p>
+            <p>是否是管理员:<span sec:authorize="hasRole('ROLE_ADMIN')">
+                是
+            </span><span sec:authorize="!hasRole('ROLE_ADMIN')">否</span></p>
         </div>
         <div sec:authorize="isAnonymous()">
             <p>未有用户登录</p>

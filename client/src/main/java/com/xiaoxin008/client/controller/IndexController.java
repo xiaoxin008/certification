@@ -21,4 +21,14 @@ public class IndexController {
     public String securedPage(){
         return "securedPage";
     }
+
+    @GetMapping("/read")
+    public String read(){
+        return "read";
+    }
+
+    @GetMapping("/write")
+    public String write(){
+        return "write";
+    }
 }
