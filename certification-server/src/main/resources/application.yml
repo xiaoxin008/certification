@@ -25,3 +25,6 @@ mybatis:
   mapperLocations: classpath:/mapper/*.xml
   type-aliases-package: com.xiaoxin.certification.dao.*Mapper
 
+logging:
+  config: classpath:logback-spring.xml
+  path: ../certification-server/logs/
