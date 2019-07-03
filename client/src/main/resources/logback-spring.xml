@@ -9,7 +9,7 @@
 
     <contextName>logback</contextName>
     <!-- 从spring配置文件取日志文件路径 -->
-    <springProperty scope="context" name="log.path" source="logging.path" defaultValue="../certification-server/logs/"/>
+    <springProperty scope="context" name="log.path" source="logging.path" defaultValue="../client/logs/"/>
     <!-- name的值是变量的名称，value的值时变量定义的值。通过定义的值会被插入到logger上下文中。定义变量后，可以使“${}”来使用变量。 -->
     <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{10} - %msg%n" />
     <!-- 日志最大保留历史 -->
@@ -31,7 +31,7 @@
 
         <!--此日志appender是为开发使用，只配置最底级别，控制台输出的日志级别是大于或等于此级别的日志信息-->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>debug</level>
+            <level>info</level>
         </filter>
         <encoder>
             <pattern>${CONSOLE_LOG_PATTERN}</pattern>

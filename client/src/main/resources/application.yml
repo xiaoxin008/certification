@@ -22,4 +22,8 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8070/eureka
+      defaultZone: http://192.168.74.128:8070/eureka
+
+logging:
+  config: classpath:logback-spring.xml
+  path: ../client/logs/
