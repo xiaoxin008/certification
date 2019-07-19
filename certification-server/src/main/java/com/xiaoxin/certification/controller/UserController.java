@@ -1,5 +1,9 @@
 package com.xiaoxin.certification.controller;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.social.security.SocialAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +27,12 @@ public class UserController {
     @RequestMapping("/user")
     @ResponseBody
     public Principal user(Principal principal) {
+        OAuth2Authentication authentication = (OAuth2Authentication) principal;
+        Authentication userAuthentication = authentication.getUserAuthentication();
+        if(userAuthentication instanceof SocialAuthenticationToken){
+            principal = new UsernamePasswordAuthenticationToken(
+                    userAuthentication.getPrincipal(),userAuthentication.getCredentials(),userAuthentication.getAuthorities());
+        }
         System.out.println(principal);
         return principal;
     }

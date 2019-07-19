@@ -1,4 +1,4 @@
-package com.xiaoxin.certification.core.config;
+package com.xiaoxin.certification.core.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;

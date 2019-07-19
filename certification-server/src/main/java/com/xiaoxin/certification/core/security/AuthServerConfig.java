@@ -1,6 +1,5 @@
-package com.xiaoxin.certification.core.config;
+package com.xiaoxin.certification.core.security;
 
-import com.xiaoxin.certification.core.security.AuthRedisTokenStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

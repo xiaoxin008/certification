@@ -29,4 +29,11 @@ public interface AccountMapper {
      * @return 账户集合对象
      */
     List<Account> geteAccountList();
+
+    /**
+     * 添加账户
+     * @param account
+     * @return
+     */
+    int insertAccount(Account account);
 }

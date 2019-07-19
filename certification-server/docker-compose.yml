@@ -1,0 +1,60 @@
+version: '3'
+services:
+  mysql-service:
+    image: docker.io/mysql:latest
+    volumes:
+      - /etc/mysql/conf.d
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+    ports:
+      - "3306:3306"
+  redis-service:
+    image: docker.io/redis:latest
+    volumes:
+      - /data
+    entrypoint: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+  eureka-service:
+    image: xiaoxin008/eureka-server:0.0.1-SNAPSHOT
+    ports:
+      - "8070:8070"
+  certification-service:
+    image: xiaoxin008/certification-server:0.0.1-SNAPSHOT
+    volumes:
+      - /certification-server/logs
+    ports:
+      - "9090:9090"
+    restart: always
+    depends_on:
+      - mysql-service
+      - redis-service
+      - eureka-service
+    links:
+      - eureka-service
+  certification-client-1:
+    image: xiaoxin008/certification-client-1:0.0.1-SNAPSHOT
+    volumes:
+      - /certification-client-1/logs
+    ports:
+      - "8882:8882"
+    restart: always
+    depends_on:
+      - eureka-service
+      - certification-service
+    links:
+      - eureka-service
+      - certification-service
+  certification-client-2:
+    image: xiaoxin008/certification-client-2:0.0.1-SNAPSHOT
+    volumes:
+      - /certification-client-2/logs
+    ports:
+      - "8883:8883"
+    restart: always
+    depends_on:
+      - eureka-service
+      - certification-service
+    links:
+      - eureka-service
+      - certification-service

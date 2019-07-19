@@ -5,6 +5,7 @@ server:
   session:
     cookie:
       name: SESSION1
+
 security:
   auth-server: http://localhost:9090
   oauth2:
@@ -16,14 +17,18 @@ security:
       scope: write
     resource:
       userInfoUri: ${security.auth-server}/user
+
 spring:
+  application:
+    name: certification-client-2
   thymeleaf:
     cache: false
+
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://192.168.74.128:8070/eureka
+      defaultZone: http://localhost:8070/eureka
 
 logging:
   config: classpath:logback-spring.xml
-  path: ../client2/logs/
+  path: ../certification-client-2/logs/

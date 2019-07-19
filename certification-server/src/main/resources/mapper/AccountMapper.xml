@@ -29,4 +29,8 @@
                left join role r on ur.r_id = r.id
     </select>
 
+    <insert id="insertAccount">
+        INSERT INTO `account` (username,password) VALUES (#{username},#{password})
+    </insert>
+
 </mapper>

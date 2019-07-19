@@ -9,14 +9,15 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.xiaoxin008</groupId>
-    <artifactId>client</artifactId>
+    <artifactId>certification-client-1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>client</name>
-    <description>client1</description>
+    <name>certification-client-1</name>
+    <description>certification-client-1</description>
 
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Finchley.SR2</spring-cloud.version>
+        <docker.registry.name>xiaoxin008</docker.registry.name>
     </properties>
 
     <dependencies>
@@ -78,6 +79,34 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.xiaoxin008.client.Application</mainClass>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <!--构建jar包时 自动打包为image package时执行build deploy 执行 push-->
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <repository>${docker.registry.name}/${project.artifactId}</repository>
+                    <tag>${project.version}</tag>
+                    <!--使用setting.xml进行dockerhub 远程认证-->
+                    <useMavenSettingsForAuth>false</useMavenSettingsForAuth>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
             </plugin>
         </plugins>
     </build>

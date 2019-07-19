@@ -13,14 +13,17 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor //必须要有无参构造器
-@AllArgsConstructor
+@RequiredArgsConstructor
 @ToString
+//@Accessors(chain = true)
 public class Account {
 
     private Long id;
 
+    @NonNull
     private String username;
 
+    @NonNull
     private String password;
 
     private List<Role> roles;

@@ -14,4 +14,8 @@ import java.util.List;
 public interface AccountService extends UserDetailsService {
 
     List<Account> listAccount();
+
+    Account getAccountByUsername(String username);
+
+    int insertAccount(Account account);
 }

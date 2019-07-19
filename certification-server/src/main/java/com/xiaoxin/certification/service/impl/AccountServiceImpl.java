@@ -33,6 +33,20 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public Account getAccountByUsername(String username) {
+        Account account = null;
+        if (StringUtils.isNotEmpty(username)) {
+           account = accountMapper.getAccountByUsername(username);
+        }
+        return account;
+    }
+
+    @Override
+    public int insertAccount(Account account) {
+        return accountMapper.insertAccount(account);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserDetails userDetails = null;
         if(StringUtils.isEmpty(username)){
