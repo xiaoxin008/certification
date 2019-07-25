@@ -1,5 +1,5 @@
 server:
-  port: 8882
+  port: 8883
   servlet:
     context-path: /client
   session:
@@ -14,13 +14,13 @@ security:
       clientSecret: 123456
       accessTokenUri: ${security.auth-server}/oauth/token
       userAuthorizationUri: ${security.auth-server}/oauth/authorize
-      scope: read
+      scope: write
     resource:
       userInfoUri: ${security.auth-server}/user
 
 spring:
   application:
-    name: certification-client-1
+    name: certification-client-2
   thymeleaf:
     cache: false
 
@@ -31,4 +31,4 @@ eureka:
 
 logging:
   config: classpath:logback-spring.xml
-  path: ../certification-client-1/logs/
+  path: ../logs/certification-client-2
