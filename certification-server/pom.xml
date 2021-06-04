@@ -22,7 +22,7 @@
         <spring-social-crypto.version>5.0.0.M2</spring-social-crypto.version>
         <spring-social.github.version>1.0.0.M4</spring-social.github.version>
         <mybatis.version>2.0.1</mybatis.version>
-        <httpclient.version>4.5.3</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <fastjson.version>1.2.58</fastjson.version>
     </properties>
 
